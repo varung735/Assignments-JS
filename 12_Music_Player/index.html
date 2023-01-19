@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Music Player</title>
+</head>
+<body>
+    <h1>Music Player</h1>
+    <div class="container">
+        <!-- This div below contains music details and controls -->
+        <div class="music-player">
+            
+            <!-- image container -->
+            <div class="img-container">
+                <!-- album art -->
+                <img src="" alt="" class="music-img" id="music-img">
+            </div>
+
+            <!-- music controls and details -->
+            <div class="music-controls">
+                <h2 class="music-name">music-name</h2>
+                <p class="music-details">Album</p>
+                <p class="music-details">Released On</p>
+                <p class="music-details">Artist</p>
+                <p class="music-details">Label</p>
+                
+                <!-- Music Controls -->
+                <div class="controls">
+                    <button class="control-btn">previous</button>
+                    <button class="control-btn">play/pause</button>
+                    <button class="control-btn">next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- This div below contains playlist-->
+        <div class="music-list">
+            <ul class="playlist">
+                <li class="playlist-item"></li>
+                <li class="playlist-item"></li>
+                <li class="playlist-item"></li>
+                <li class="playlist-item"></li>
+                <li class="playlist-item"></li>
+                <li class="playlist-item"></li>
+            </ul>
+        </div>
+    </div>
+    <script src="./scripts.js"></script>
+</body>
+</html>
