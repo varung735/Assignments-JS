@@ -12,7 +12,7 @@
     {
         "id": 1,
         "name": "I took a pill in ibiza",
-        "audio": "./assets/music/I-Took-A-Pill-Ibiza.mp3",
+        "audio": "./assets/music/I-Took-A-Pill-In-Ibiza.mp3",
         "albumArt": "https://i.scdn.co/image/ab67616d0000b2731db27fa11dbafa67857da8f3",
         "album": "Non-Album Single",
         "artist": "Mike Posner, Seeb",

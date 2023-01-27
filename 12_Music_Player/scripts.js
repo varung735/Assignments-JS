@@ -15,6 +15,9 @@ const nextBtn = document.getElementById("next");
 const volumeBar = document.getElementById("volumeBar");
 const playlistDiv = document.getElementById("playlist-box");
 
+let playlistLength = playlist.length - 1;
+let currentSong = 0; // To be used for playing the previous and next from the current song.
+
 // add the songs from playlist in playlist box as play item
 const createPlayItem = (id, songName, albumArtSrc, songArtist) => {
     const playItemDiv = document.createElement('div');
@@ -56,35 +59,45 @@ playlist.map((song) => {
 
 const playItemDiv = document.querySelectorAll('#play-item');
 
+// function for loading the song into the player.
+
+const loadSong = (songId) => {
+    musicImg.setAttribute('src', playlist[songId].albumArt);
+    musicName.innerText = playlist[songId].name;
+    album.innerText = "Album: " + playlist[songId].album;
+    releasedOn.innerText = "Released On: " + playlist[songId]["released-on"];
+    artist.innerText = "Artist: " + playlist[songId].artist;
+    label.innerText = "Label: " + playlist[songId].label;
+    audio.src = playlist[songId].audio;
+    playSong()
+}
+
 // for attaching the click listeners to every play item div created through createPlayItem()
 // the click listener is to select song from the list to be played on player.
 playItemDiv.forEach((item) => {
     item.addEventListener('click', () => {
         let songId = event.target.classList[1];
-        
-        playImg.setAttribute('src', "./assets/icons/play.svg");
-        musicImg.setAttribute('src', playlist[songId].albumArt);
-        musicName.innerText = playlist[songId].name;
-        album.innerText = "Album: " + playlist[songId].album;
-        releasedOn.innerText = "Released On: " + playlist[songId]["released-on"];
-        artist.innerText = "Artist: " + playlist[songId].artist;
-        label.innerText = "Label: " + playlist[songId].label;
-        audio.src = playlist[songId].audio;
+        currentSong = songId;
+
+        loadSong(songId);
     })
 });
 
+//function to play the song
 const playSong = () => {
     playBtn.classList.add("play");
     playImg.setAttribute('src', "./assets/icons/pause.svg");
     audio.play();
 }
 
+//function to pause the song
 const pauseSong = () => {
     playBtn.classList.remove("play");
     playImg.setAttribute('src', "./assets/icons/play.svg");
     audio.pause();
 }
 
+// click listener to play and pause song.
 playBtn.addEventListener('click', () => {
     let isPlaying = playBtn.classList.contains("play");
     
@@ -94,3 +107,26 @@ playBtn.addEventListener('click', () => {
         playSong();
     }
 });
+
+//click listener to play the previous song
+prevBtn.addEventListener('click', () => {
+    if(currentSong == 0){
+       currentSong = playlistLength;
+       loadSong(currentSong);
+    }
+    else{
+        currentSong = currentSong - 1;
+        loadSong(currentSong);
+    }
+});
+
+//click listener to play the next
+nextBtn.addEventListener('click', () => {
+    if(currentSong == playlistLength){
+        currentSong = 0;
+        loadSong(currentSong);
+    }else{
+        ++currentSong;
+        loadSong(currentSong);
+    }
+})
