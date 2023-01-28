@@ -7,6 +7,7 @@ const releasedOn = document.getElementById("released-on");
 const artist = document.getElementById("artist");
 const label = document.getElementById("label");
 const audio = document.getElementById("audio");
+const progressDiv = document.getElementById("progress-div");
 const progressBar = document.getElementById("progress-bar");
 const prevBtn = document.getElementById("previous");
 const playBtn = document.getElementById("play");
@@ -129,4 +130,37 @@ nextBtn.addEventListener('click', () => {
         ++currentSong;
         loadSong(currentSong);
     }
-})
+});
+
+//function to updating the progress bar;
+const updateProgress = (e) => {
+    const duration = e.srcElement.duration;
+    const currentTime = e.srcElement.currentTime;
+
+    const progressPercent = (currentTime/duration) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+}
+
+// function to set the progress bar on click
+const setProgress = (e) => {
+    const width = progressDiv.clientWidth;
+    const clickWidth = e.offsetX;
+    const duration = audio.duration;
+
+    audio.currentTime = (clickWidth / width) * duration;
+}
+
+// timeupdate event for updating the progress bar 
+audio.addEventListener('timeupdate', updateProgress);
+audio.addEventListener('ended', () => {
+    if(currentSong == playlistLength){
+        currentSong = 0;
+        loadSong(currentSong);
+    }else{
+        ++currentSong;
+        loadSong(currentSong);
+    }
+});
+
+// click event for setting the progress bar by clicking anywhere on progress bar
+progressDiv.addEventListener('click', setProgress);
