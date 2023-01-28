@@ -76,6 +76,7 @@ body{
 }
 
 .progress-div{
+    cursor: pointer;
     margin-top: 8%;
     height: 3px;
     background-color: #E6E6EB;
@@ -115,6 +116,7 @@ body{
 }
 
 .volume-div{
+    cursor: pointer;
     height: 3px;
     width: 30%;
     background-color: #E6E6EB;
@@ -123,7 +125,7 @@ body{
 
 .volume-bar{
     height: 100%;
-    width: 0%;
+    width: 100%;
     background-color: #D0312D;
 }
 

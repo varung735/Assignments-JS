@@ -13,7 +13,8 @@ const prevBtn = document.getElementById("previous");
 const playBtn = document.getElementById("play");
 const playImg = document.getElementById("play-img");
 const nextBtn = document.getElementById("next");
-const volumeBar = document.getElementById("volumeBar");
+const volumeDiv = document.getElementById("volume-div");
+const volumeBar = document.getElementById("volume-bar");
 const playlistDiv = document.getElementById("playlist-box");
 
 let playlistLength = playlist.length - 1;
@@ -152,6 +153,8 @@ const setProgress = (e) => {
 
 // timeupdate event for updating the progress bar 
 audio.addEventListener('timeupdate', updateProgress);
+
+// ended listener to play the next song automatically when the song ends.
 audio.addEventListener('ended', () => {
     if(currentSong == playlistLength){
         currentSong = 0;
@@ -164,3 +167,18 @@ audio.addEventListener('ended', () => {
 
 // click event for setting the progress bar by clicking anywhere on progress bar
 progressDiv.addEventListener('click', setProgress);
+
+//function to set the volume (called in event listener below)
+const setVolume = (e) => {
+    const width = volumeDiv.clientWidth;
+    const clickWidth = e.offsetX;
+
+    const volume = (clickWidth/width);
+    const barWidth = volume * 100;
+
+    audio.volume = volume;
+    volumeBar.style.width = `${barWidth}%`;
+}
+
+// click event to set the volume
+volumeDiv.addEventListener('click', setVolume);
