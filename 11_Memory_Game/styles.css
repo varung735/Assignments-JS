@@ -50,3 +50,20 @@ body{
     height: 60px;
     width: 60px;
 }
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory-img{
+    height: 150px;
+    width: 160px;
+    border-radius: 15px;
+}
+
+.memory-title{
+    
+}
