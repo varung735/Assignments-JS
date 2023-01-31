@@ -1,6 +1,8 @@
 const cards = document.querySelectorAll(".card");
 const cardImgs = document.querySelectorAll(".card-img");
+let revealedCard; //class will be added later on the revealed card through click listener.
 
+let selectedImgs = [];
 const imgArray = [
     {"id": 0, "title": "Moon", "image":"./assets/moon.jpg", "count": 0},
     {"id": 1, "title": "Sun", "image":"./assets/sun.jpg", "count": 0},
@@ -28,7 +30,7 @@ const randomNumber = () => {
 
 // functions to put images in cards
 const assignImages = (card) => {
-    
+   
     const image = document.createElement('img');
     const h3 = document.createElement('h3');
 
@@ -44,12 +46,61 @@ const assignImages = (card) => {
     image.classList.add(imgArray[random].id);
 
     image.setAttribute('src', imgArray[random].image);
+
     h3.innerText = imgArray[random].title;
 
     card.appendChild(image);
     card.appendChild(h3);
 }
 
+// function to compare images
+const compareImages = (imgOne, imgTwo, card, revealedCard) => {
+    
+    if(imgOne != imgTwo){
+        hideImages(revealedCard);
+        hideImages(card);
+        alert("Images don't match");
+        revealedCard = null;
+        selectedImgs = [];
+    }
+    else{
+        alert("Images Match.");
+        revealedCard = null;
+        selectedImgs = [];
+    }
+
+}
+
+// function for revealing the images
+const revealImages = (card) => {
+    card.children[0].classList.add("hidden"); //card.children gives all the children of card-div in the form form of a node-list
+    card.children[1].classList.remove("hidden");
+    card.children[2].classList.remove("hidden");
+}
+
+// function to hide the image back
+const hideImages = (card) => {
+    card.children[0].classList.remove("hidden");
+    card.children[1].classList.add("hidden");
+    card.children[2].classList.add("hidden");
+}
+
+//forEach method on cards to assignImages and listener to each card
 cards.forEach((card) => {
+    
     assignImages(card);
+    
+    card.addEventListener('click', () => {
+        revealImages(card);
+
+        card.classList.add("revealed");
+        revealedCard = document.querySelector(".revealed");
+
+        selectedImgs.push(card.children[1].classList[1]);
+        console.log(selectedImgs);
+
+        if(selectedImgs.length == 2){
+            compareImages(selectedImgs[0], selectedImgs[1], card, revealedCard);
+        }
+    });
 });
