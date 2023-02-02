@@ -37,7 +37,7 @@ const assignImages = (card) => {
     image.classList.add("memory-img");
     h3.classList.add("memory-title");
 
-    let random = randomNumber();
+    let random = randomNumber(); //calling random function here
     card.classList.add("flex");
 
     image.classList.add("hidden");
@@ -59,13 +59,11 @@ const compareImages = (imgOne, imgTwo, card, revealedCard) => {
     if(imgOne != imgTwo){
         hideImages(revealedCard);
         hideImages(card);
-        alert("Images don't match");
-        revealedCard = null;
+        revealedCard.classList.remove("revealed");
         selectedImgs = [];
     }
     else{
-        alert("Images Match.");
-        revealedCard = null;
+        revealedCard.classList.remove("revealed");
         selectedImgs = [];
     }
 
@@ -98,6 +96,7 @@ cards.forEach((card) => {
 
         selectedImgs.push(card.children[1].classList[1]);
         console.log(selectedImgs);
+        console.log(revealedCard);
 
         if(selectedImgs.length == 2){
             compareImages(selectedImgs[0], selectedImgs[1], card, revealedCard);

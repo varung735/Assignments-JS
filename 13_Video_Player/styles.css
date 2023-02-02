@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: #17171f;
+}
+
+.container{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center ;
+}
+
+/* styles for video holder */
+
+.video-holder{
+    width: 80%;
+    height: 100%;
+    border-right: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-player{
+    height: 80%;
+    border-bottom: 1px solid #fff;
+}
+
+.video-desc{
+    height: 20%;
+}
+
+
+/* styles for video playlist */
+
+.video-playlist{
+    width: 20%;
+    height: 100%;
+}
