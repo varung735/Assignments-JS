@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: #93BFCF;
+}
+
+/* styles for container */
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* styles for todo form */
+
+.todo-form{
+    width: 30%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #6096B4;
+    border-radius: 10px;
+}
+
+.todo-input{
+    padding-left: 1%;
+    width: 80%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+}
+
+.add-btn{
+    cursor: pointer;
+    margin-top: 3%;
+    width: 81%;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #EEE9DA;
+}
+
+/* styles for created todo */
