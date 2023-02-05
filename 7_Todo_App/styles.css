@@ -53,3 +53,38 @@ body{
 }
 
 /* styles for created todo */
+
+.todos{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo{
+    margin-top: 4%;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #6096B4;
+    border-radius: 10px;
+}
+
+.todo-title{
+    margin-left: 2%;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.icons{
+    margin-right: 2%;
+    display: flex;
+    gap: 10px;
+}
+
+.icon{
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
