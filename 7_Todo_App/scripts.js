@@ -5,6 +5,7 @@ const todoForm = document.querySelector(".todo-form");
 
 // functions
 
+//function to create todo after taking value from input tag
 const createTodo = (inputValue) => {
     let todoDiv = document.createElement('div');
     let todoTitle = document.createElement('h3');
