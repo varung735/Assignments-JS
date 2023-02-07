@@ -5,11 +5,7 @@ const button = document.querySelector(".button");
 //function to call random quote
 const quote = async () => {
     try {
-        const getQuote = await fetch("https://api.quotable.io/random", {
-            headers: {
-                'Accept': 'application/json'
-            }    
-        });
+        const getQuote = await fetch("https://api.quotable.io/random");
         const quote = await getQuote.json();
         content.innerText = quote.content;
         author.innerText = quote.author;
