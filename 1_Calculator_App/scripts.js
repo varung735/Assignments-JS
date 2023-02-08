@@ -57,9 +57,12 @@ buttons.forEach((button) => {
         //event listener
         button.addEventListener('click', () => {
             let id = button.getAttribute('id');
+            // without this condition 0 will be added with the values that you are inserting in to the display
+            // if you try to insert 2, the calci-display will display 02
             if(display.value == 0){
                 display.value = null;
             }
+
             if(id != null){
                 insertValue(id);
             }
@@ -68,7 +71,7 @@ buttons.forEach((button) => {
 });
 
 buttons.forEach((button) => {
-    // the conditions doesn't allows the listener to be applied on AC and "equal-to" or "=" button
+    // the condition doesn't allows the listener to be applied on AC and "equal-to" or "=" button
     if(button.classList.contains("no-listener") && !button.classList.contains("equal-to") && !button.classList.contains("ac")){
         button.addEventListener('click', () => {
             assignA(button.getAttribute('id'));
